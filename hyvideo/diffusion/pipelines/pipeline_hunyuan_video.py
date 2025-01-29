@@ -47,6 +47,7 @@ from ...constants import PRECISION_TO_TYPE
 from ...vae.autoencoder_kl_causal_3d import AutoencoderKLCausal3D
 from ...text_encoder import TextEncoder
 from ...modules import HYVideoDiffusionTransformer
+from .lora_pipeline import HunyuanVideoLoraLoaderMixin
 
 logger = logging.get_logger(__name__)  # pylint: disable=invalid-name
 
@@ -141,7 +142,7 @@ class HunyuanVideoPipelineOutput(BaseOutput):
     videos: Union[torch.Tensor, np.ndarray]
 
 
-class HunyuanVideoPipeline(DiffusionPipeline):
+class HunyuanVideoPipeline(DiffusionPipeline, HunyuanVideoLoraLoaderMixin):
     r"""
     Pipeline for text-to-video generation using HunyuanVideo.
 
